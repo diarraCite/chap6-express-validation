@@ -1,0 +1,29 @@
+{
+  "name": "intro-express-mysql",
+  "version": "1.0.0",
+  "description": "introdcution a l'utilisation des bases donnees avec espress",
+  "keywords": [
+    "node",
+    "express",
+    "mysql"
+  ],
+  "license": "ISC",
+  "author": "Groupe 80",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "dependencies": {
+    "compression": "^1.8.2",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "helmet": "^8.3.0",
+    "mysql2": "^3.24.5",
+    "nodemon": "^3.1.14",
+    "sequelize": "^6.37.8"
+  }
+}
