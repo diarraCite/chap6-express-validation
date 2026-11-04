@@ -6,10 +6,15 @@ import dotenv from "dotenv"
 const { DB_NAME, DB_USER, DB_PASSWORD, DB_DIALECT, DB_PORT,DB_HOST } = dotenv.config().parsed
 
 
-const database = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD,{
-    host:DB_HOST,
-    dialect:DB_DIALECT,
-    //port: DB_PORT
-})
+// const database = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD,{
+//     host:DB_HOST,
+//     dialect:DB_DIALECT,
+//     port: DB_PORT
+// })
+
+const database = new Sequelize({
+  dialect: 'sqlite',
+  storage: './database.sqlite'
+});
 
 export default database

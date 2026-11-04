@@ -1,6 +1,7 @@
 import express from "express"
 import helmet from "helmet"
 import cors from "cors"
+import bodyParser from "body-parser"
 import compression from "compression"
 import { configDotenv } from "dotenv";
 
@@ -10,6 +11,7 @@ import database from "./config/connection.js";
 import { DepartmentById, DepartmentList } from "./controllers/departmentController.js";
 import departmentRoute from "./routes/departmentRoute.js";
 import userRoute from "./routes/userRoute.js";
+import loginRoute from "./routes/loginRoute.js"
 
 
 const app = express()
@@ -17,7 +19,10 @@ const app = express()
 app.use(cors())
 app.use(helmet())
 app.use(compression())
+
 app.use(express.json())
+
+app.use(express.urlencoded({ extended: true }))
 
 try {
     //await database.sync({ alter: true }) //Mise a jour
@@ -29,6 +34,7 @@ try {
 
 app.use("/api/departments", departmentRoute)
 app.use("/api/users", userRoute)
+app.use("/api/login", loginRoute)
 
 const PORT = 5000
 
