@@ -4,7 +4,14 @@ import { Department } from "../models/relation.js"
 //Liste des departements
 export const DepartmentList = async (req, res) => {
     try {
-        const data = await Department.findAll()
+        const data = await Department.findAll({
+            // include: [{
+            //     model: "User",
+            //     attributes: {
+            //         exclude: ["mdp"]
+            //     }
+            // }]
+        })
         res.status(200).json({ data })
     } catch (error) {
         console.log(error)
@@ -82,7 +89,7 @@ export const departmentUsers = async (req, res) => {
     try {
         const department = await Department.findByPk(id)
 
-        const users = await department.getUsers()
+        const users = await department.getUsers({ attributes: { exclude: ["mdp"] } })
         res.status(200).json({ data: users })
 
     } catch (error) {
