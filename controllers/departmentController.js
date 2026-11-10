@@ -1,16 +1,16 @@
 import { validationResult } from "express-validator"
-import { Department } from "../models/relation.js"
+import { Department, User } from "../models/relation.js"
 
 //Liste des departements
 export const DepartmentList = async (req, res) => {
     try {
         const data = await Department.findAll({
-            // include: [{
-            //     model: "User",
-            //     attributes: {
-            //         exclude: ["mdp"]
-            //     }
-            // }]
+            include: [{
+                model: User,
+                attributes: {
+                    exclude: ["mdp"]
+                }
+            }]
         })
         res.status(200).json({ data })
     } catch (error) {

@@ -6,7 +6,7 @@ const departmentRoute = Router()
 
 departmentRoute
     .get("/",verifyToken, DepartmentList)
-    .get("/:id", DepartmentById)
+    .get("/:id",verifyToken, DepartmentById)
     .post("/", departmentValidationRules, addDepartment)
     .delete("/:id", deleteDepartment)
     .put("/:id", departmentValidationRules, updateDepartment)

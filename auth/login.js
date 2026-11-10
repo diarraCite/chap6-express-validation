@@ -19,8 +19,8 @@ const login = async (req, res) => {
         let payload = { id: user.id, prenom: user.prenom }
         let token = jwt.sign(payload, process.env.CODE_SECRET)
 
-        // const { mdp, ...restUser } = user.toJSON()
-        res.status(200).json({ data: { user, token } })
+        const { mdp:passwd, ...restUser } = user.toJSON()
+        res.status(200).json({ data: { user: restUser, token } })
 
     } catch (error) {
         res.status(200).json({ message: error.message })
